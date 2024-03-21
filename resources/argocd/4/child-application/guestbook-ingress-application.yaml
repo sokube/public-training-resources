@@ -11,7 +11,7 @@ spec:
     path: resources/argocd/4/k8s-resources
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: student-guestbook
+    namespace: argocd
   info:
   - name: 'Guestbook-Ingress'
-    value: 'Application demo ingress'
+    value: 'Application child ingress'

@@ -4,7 +4,7 @@ metadata:
   annotations:
     ingress.kubernetes.io/ssl-redirect: "false"
   name: guestbook-ingress
-  namespace: student-guestbook
+  namespace: argocd
 spec:
   ingressClassName: traefik
   rules:
