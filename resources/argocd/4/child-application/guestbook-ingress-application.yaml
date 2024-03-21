@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: guestbook-ingress
+  namespace: argocd
+spec:
+  project: demo-project
+  source:
+    repoURL: 'https://github.com/sokube/public-training-resources.git'
+    targetRevision: HEAD
+    path: resources/argocd/4/k8s-resources
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: student-guestbook
+  info:
+  - name: 'Guestbook-Ingress'
+    value: 'Application demo ingress'
