@@ -8,7 +8,6 @@ data:
       listen 80;
       server_name training-dev.whoami.io;
       gzip "on";
-      proxy_cache false;
       server_tokens off;
       add_header X-Frame-Options "SAMEORIGIN";
       location / {
