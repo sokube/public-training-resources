@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-nginx-nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-nginx-nginx
+  template:
+    metadata:
+      labels:
+        app: my-nginx-nginx
+    spec:
+      containers:
+        - name: nginx
+          image: "nginx:1.25.4"
+          ports:
+            - name: internal
+              containerPort: 80
+          volumeMounts:
+          - name: index
+            mountPath: /usr/share/nginx/html
+          - name: vhost-config
+            mountPath: /etc/nginx/conf.d
+      volumes:
+      - name: index
+        configMap:
+          name: nginx-index
+      - name: vhost-config
+        configMap:
+          name: nginx-vhost-config
+          items:
+            - key: "training-dev.whoami.io.conf"
+              path: "training-dev.whoami.io.conf"
